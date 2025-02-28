@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Duck</title>
 </head>
 <body>
-<label for="duckId">Id:</label>
-<input id="duckId" type="text"/>
-
-<label for="duckType">Type:</label>
-<input id="duckType" type="text"/>
-
-<label for="imageInput">Upload Image:</label>
-<input id="imageInput" type="file"/>
-
-<button onclick="addTheDuck()">Add the duck</button>
+<h1>Add a Duck</h1>
+<form id="addDuckForm">
+    <label for="duckId">Duck ID:</label>
+    <input type="text" id="duckId" name="duckId" required><br>
+    <label for="duckType">Duck Type:</label>
+    <input type="text" id="duckType" name="duckType" required><br>
+    <label for="imageInput">Duck Image:</label>
+    <input type="file" id="imageInput" name="imageInput" accept="image/*" required><br>
+    <button type="submit">Add Duck</button>
+</form>
 
 
 <script>
-        let host = "http://localhost:8080";
+        let host = "https://ducksservice-sathya-hardy.onrender.com";
             async function submitTheImage(){
             let duckId = document.getElementById("duckId").value;
             let imageInput = document.getElementById("imageInput");

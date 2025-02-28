@@ -5,49 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search ducks</title>
     <style>
-      table {
-        border: 1px solid;
-        border-collapse: collapse;
-        margin: 30px;
-      }
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f9;
+          padding: 20px;
+          margin: 0;
+        }
 
-      table td,
-      th {
-        border-left: 1px solid #000;
-        border-right: 1px solid #000;
-      }
+        h1 {
+          text-align: center;
+          color: #333;
+        }
 
-      table td:first-child {
-        border-left: none;
-      }
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #ffffff;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+        }
 
-      table td:last-child {
-        border-right: none;
-      }
+        label {
+          font-weight: bold;
+          margin-right: 10px;
+          font-size: 16px;
+        }
+
+        input[type="text"] {
+          padding: 8px;
+          width: 60%;
+          margin-right: 10px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+        }
+
+        button {
+          padding: 8px 16px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+        }
+
+        button:hover {
+          background-color: #0056b3;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+
+        th, td {
+          padding: 12px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+
+        th {
+          background-color: #f2f2f2;
+          color: #333;
+        }
+
+        tr:hover {
+          background-color: #f9f9f9;
+        }
+
+        td {
+          color: #555;
+        }
+
+        .search-container {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 20px;
+        }
     </style>
   </head>
   <body>
-    <labe>Type:</labe>
-    <input id="type" />
-    <button onclick="search()">Search</button>
-    <br />
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Type</th>
-              </tr>
-        </thead>
-        <tbody id="result">
-
-        </tbody>
-     
-    </table>
+  <div class="container">
+      <h1>Search Ducks</h1>
+      <div class="search-container">
+          <label for="type">Duck Type:</label>
+          <input type="text" id="type" placeholder="Enter duck type..." />
+          <button onclick="search()">Search</button>
+      </div>
+      <table>
+          <thead>
+          <tr>
+              <th>Id</th>
+              <th>Type</th>
+          </tr>
+          </thead>
+          <tbody id="result">
+          <!-- Results will be displayed here -->
+          </tbody>
+      </table>
+  </div>
 
     <script>
         let ducks=[];
         async function getAll(){
-        let host = "http://localhost:8080";
+        let host = "https://ducksservice-sathya-hardy.onrender.com";
         try {
         let response = await fetch(host + "/ducks");
         if (!response.ok) {
